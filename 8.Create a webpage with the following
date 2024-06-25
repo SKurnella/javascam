@@ -1,55 +1,82 @@
-8. Create a webpage with the following using HTML5:
-i.	To embed an image map in a web page
-ii.	To fix the hot spots
-iii.	Show all the related information when the hotspots are clicked
-iv.	  Create a web page with all types of Cascading style sheets.
+9. Create a webpage with the following using CSS:
+i. Text shadows, rounded corners and box shadows.
+ii. Linear and Radial gradients.
+iii. Animation
+iv. Transitions and Transformations.
 Procedure:
-Steps for creating a webpage with the specified features using HTML5:
-o	Identify the image you want to use as the map.
-o	Define clickable areas (hotspots) within the image using the <map> and <area> tags.
-o	Specify the shape (rectangular, circular, or polygonal) and coordinates for each hotspot.
-o	Link each hotspot to relevant content or pages.
-o	Ensure that the coordinates of each hotspot accurately correspond to the desired clickable area on the image.
-o	Test the hotspots to verify that they work as expected when clicked.
-o	When a hotspot is clicked, show additional information related to that area.
-o	You can achieve this by linking the hotspot to a separate page or by using JavaScript to display a tooltip or modal with relevant details.
-o	Create a new HTML file.
-o	Add content to the page (text, images, etc.).
-o	Apply different types of CSS styles to elements:
-	Inline styles (using the style attribute)
-	Internal styles (within the <style> tag in the <head>)
-	External styles (using an external CSS file linked via the <link> tag)
-	Explore various CSS properties (e.g., font, color, margin, padding, border) to style your content.
+o	Text Shadows:
+	Apply shadows to text using the text-shadow property.
+	Specify horizontal and vertical offsets, blur radius, and color.
+o	Rounded Corners:
+	Use the border-radius property to round the corners of elements (e.g., divs, buttons).
+	Set the radius value to create smooth curves.
+o	Box Shadows:
+	Add shadows to elements using the box-shadow property.
+	Define horizontal and vertical offsets, blur radius, spread distance, and shadow color.
+o	Linear Gradients:
+	Create smooth color transitions along a straight line.
+	Use the linear-gradient function in CSS.
+	Specify start and end colors, and optionally add color stops.
+o	Radial Gradients:
+	Create color transitions from a central point outward.
+	Use the radial-gradient function.
+	Set center position, shape, and color stops.
+o	Apply animations to elements using CSS.
+o	Use the @keyframes rule to define animation steps.
+o	Specify animation properties (duration, timing function, delay, iteration count).
+o	Transitions:
+	Create smooth transitions between property values (e.g., color, size, position).
+	Use the transition property.
+	Specify transition duration and easing function.
+o	Transformations:
+	Modify element properties (e.g., scale, rotate, skew, translate).
+	Use the transform property.
+	Apply transformations to enhance visual effects.
 
 
-    Sample code:
+Sample Code:
+
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Image Map</title>
+       <title>CSS text animation</title>
     <style>
-        #info {
-            display: none;
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border: 1px solid #ccc;
+        body {  font-family: Arial, sans-serif;    background-color: #f0f0f0;
+            margin: 0;        padding: 0;        }
+        /* css text shados,round,. */
+        .text-box { width: 300px;   padding: 20px; background-color: #ffffff;
+            border-radius: 10px;   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin: 50px auto;       }
+
+        h1 { text-align: center;    text-shadow: 2px 2px 4px #888888;       }
+        /* css linear gradient */
+        .linear-gradient-box {   width: 200px;         height: 200px;
+           background: linear-gradient(to right, #ff7e5f, #feb47b);  margin: 20px auto;}
+        /* css radial gradient */
+        .radial-gradient-box { width: 200px;   height: 200px;
+            background: radial-gradient(circle, #ff5f6d, #ffc371);  margin: 20px auto; }
+        /* css animate*/
+        .animated { width: 100px;     height: 100px;   background-color: #4CAF50;
+            position: relative;            animation: move 2s infinite alternate;        }
+        @keyframes move {
+            from {        left: 0px;      }
+            to {   left: 200px;         }
         }
+        /* Transitions and Transformations */
+        .transition-box {width: 100px;   height: 100px;  background-color: #008CBA;
+            margin: 20px auto;      transition: transform 0.5s ease-in-out;      }
+        .transition-box:hover {          transform: rotate(360deg);       }
     </style>
 </head>
 <body>
-    <h1>Image Map</h1>
-    <img src="bird1.jpg" width=400 height=400 alt="Imagemap"  
-               usemap="#hotspots">
-    <map name="hotspots">
-        <area shape="rect" coords="0,0,50,50" alt="Hotspot 1" 
-                       href="experiment1.html" data-info="hotspot 1">
-        <area shape="circle" coords="100,100,50" alt="Hotspot 2" 
-                       href="experiment1.html" data-info="hotspot 2">
-        <area shape="poly" coords="150,100,180,50,120,200" alt="Hotspot 3" 
-                       href="experiment3.html" data-info="hotspot 3">
-    </map>
- </body>
+    <div class="text-box">
+        <h1>CSS example</h1>
+        <p>This box demonstrates text shadows, rounded corners, and box 
+               shadows.</p>
+    </div>
+    <div class="linear-gradient-box"></div>
+    <div class="radial-gradient-box"></div>
+    <div class="animated"></div>
+    <div class="transition-box"></div>
+</body>
 </html>
-
-
