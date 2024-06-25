@@ -1,0 +1,55 @@
+8. Create a webpage with the following using HTML5:
+i.	To embed an image map in a web page
+ii.	To fix the hot spots
+iii.	Show all the related information when the hotspots are clicked
+iv.	  Create a web page with all types of Cascading style sheets.
+Procedure:
+Steps for creating a webpage with the specified features using HTML5:
+o	Identify the image you want to use as the map.
+o	Define clickable areas (hotspots) within the image using the <map> and <area> tags.
+o	Specify the shape (rectangular, circular, or polygonal) and coordinates for each hotspot.
+o	Link each hotspot to relevant content or pages.
+o	Ensure that the coordinates of each hotspot accurately correspond to the desired clickable area on the image.
+o	Test the hotspots to verify that they work as expected when clicked.
+o	When a hotspot is clicked, show additional information related to that area.
+o	You can achieve this by linking the hotspot to a separate page or by using JavaScript to display a tooltip or modal with relevant details.
+o	Create a new HTML file.
+o	Add content to the page (text, images, etc.).
+o	Apply different types of CSS styles to elements:
+	Inline styles (using the style attribute)
+	Internal styles (within the <style> tag in the <head>)
+	External styles (using an external CSS file linked via the <link> tag)
+	Explore various CSS properties (e.g., font, color, margin, padding, border) to style your content.
+
+
+    Sample code:
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Image Map</title>
+    <style>
+        #info {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Map</h1>
+    <img src="bird1.jpg" width=400 height=400 alt="Imagemap"  
+               usemap="#hotspots">
+    <map name="hotspots">
+        <area shape="rect" coords="0,0,50,50" alt="Hotspot 1" 
+                       href="experiment1.html" data-info="hotspot 1">
+        <area shape="circle" coords="100,100,50" alt="Hotspot 2" 
+                       href="experiment1.html" data-info="hotspot 2">
+        <area shape="poly" coords="150,100,180,50,120,200" alt="Hotspot 3" 
+                       href="experiment3.html" data-info="hotspot 3">
+    </map>
+ </body>
+</html>
+
+
