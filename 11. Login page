@@ -1,0 +1,76 @@
+17.	Using java servlets and JDBCs to red and retrieve the following information from a database:
+a.	Name
+b.	Password
+c.	Email id
+d.	Phone number
+Procedure:
+o	Java Servlets: Servlets are Java classes that handle HTTP requests and responses. They run on a web server and provide dynamic content.
+o	JDBC (Java Database Connectivity): JDBC is a Java API for connecting to databases, executing SQL queries, and retrieving data.
+o	Set up a database system (e.g., MySQL, PostgreSQL).
+o	Create a database and tables to store user information (name, password, email, phone number).
+o	Create Java servlets to handle HTTP requests related to user data.
+o	Implement methods to connect to the database using JDBC.
+o	Retrieve user information based on the specified criteria (name, password, email, phone number).
+o	Configure servlet mappings in the web.xml file.
+o	Define URL patterns that map to your servlets.
+o	In your servlets, execute SQL queries to retrieve user data.
+o	Use prepared statements to prevent SQL injection.
+o	Extract the retrieved data (name, password, email, phone number).
+o	Format it as needed (e.g., display in a table, JSON response, etc.).
+o	Deploy your servlets on a web server (e.g., Tomcat, Jetty).
+o	Access the servlets via URLs to verify that they retrieve the specified information from the database.
+
+Sample Code:
+
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Input Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px;  }
+        form {
+            max-width: 400px;  margin: 0 auto;  padding: 20px; border: 1px solid #ccc;
+            border-radius: 5px;  background-color: #f9f9f9;    }
+        input[type="text"],
+        input[type="date"],
+        input[type="submit"] { width: 100%; padding: 10px; margin-bottom: 10px;  border: 1px solid #ccc;
+            border-radius: 5px;  box-sizing: border-box;    }
+        input[type="submit"] { background-color: #4CAF50; color: white;  cursor: pointer;   }
+        input[type="submit"]:hover {background-color: #45a049;      }
+        .output { margin-top: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;
+            background-color: #fff;     }
+    </style>
+</head>
+<body>
+<p align="center" style="color:green;font-size:50px;">Student Info Form</p>
+    <form id="f1" onsubmit="return displayInfo()">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="block1" class="output" style="display: none;">
+        <h2>User Information</h2>
+        <p><strong>First Name:</strong> <span id="FName"></span></p>
+        <p><strong>Last Name:</strong> <span id="LName"></span></p>
+        <p><strong>Date of Birth:</strong> <span id="PDOB"></span></p>
+    </div>
+
+    <script>
+        function displayInfo() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var dob = document.getElementById('dob').value;
+            document.getElementById('FName').innerText = firstName;
+            document.getElementById('LName').innerText = lastName;
+            document.getElementById('PDOB').innerText = dob;
+            document.getElementById('block1').style.display = 'block';
+            return false; 
+        }
+    </script>
+</body>
+</html>
