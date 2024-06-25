@@ -1,0 +1,86 @@
+11.	Create a home page for "Cyber book stores" that will display the various books available, the authors and prices of the books. Include a list box that contains various subjects and a "submit" button, which displays information about the books on the subject required by the user.
+Procedure:
+o	Create an HTML file for your homepage.
+o	Use the <html>, <head>, and <body> tags to structure your content.
+o	Add a header section that includes the website logo, title, and navigation links (if any).
+o	Create a section to display various books available in your store.
+o	Include details such as book titles, authors, and prices.
+o	You can use tables, lists, or other HTML elements to organize this information.
+o	Add a list box (dropdown menu) that contains various subjects (e.g., Fiction, Non-Fiction, Science, History).
+o	Populate the list with relevant subjects.
+o	Include a “Submit” button next to the subject list box.
+o	When the user selects a subject and clicks the button, it should trigger an action (e.g., display books related to the selected subject).
+o	Use JavaScript or server-side scripting (e.g., PHP) to handle the form submission.
+o	When the user selects a subject and clicks “Submit,” retrieve the relevant book information (titles, authors, prices).
+o	Display this information on the page dynamically (without refreshing the entire page).
+o	Apply CSS styles to make your homepage visually appealing.
+o	Use colors, fonts, and spacing to create an attractive design.
+o	Ensure that the layout is user-friendly and responsive.
+o	Save your HTML file.
+o	Open it in a web browser to verify that the books, subjects, and submit button work as expected.
+
+Sample Code:
+Sample Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Book Stores</title>
+  <link rel="stylesheet" href="bookstyle.css">  
+</head>
+<body>
+    <div class="container">
+        <h1>Cyber Book Stores</h1>
+        <form id="bookForm" name="f1">
+            <label for="subject">Select a Subject:</label>
+            <select id="subject">
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                </select>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <h2>Books</h2>
+        <ul class="book-list" id="bookList">
+            
+        </ul>
+    </div>
+    <script>
+        document.getElementById('bookForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            var subject = document.getElementById('subject').value;
+            displayBooks(subject);
+        });
+        function displayBooks(subject) 
+      {
+            
+            var csebooks = [
+                { title: 'C', author: 'Hari', price: '$10.99' },
+                { title: 'C++', author: 'Galvin', price: '$12.99' },
+                { title: 'HTML', author: 'Dietel', price: '$9.99' }
+            ];
+           var ecebooks = [
+                { title: 'Co', author: 'xyz', price: '$10.99' },
+                { title: 'Micro Processor', author: 'Sinha', price: '$12.99' },
+                { title: 'VLSI Design', author: 'Sham', price: '$9.99' }
+            ];
+            var bookList = document.getElementById('bookList');
+            bookList.innerHTML = ''; // Clear previous book list
+              var booktype;
+		if(subject=='CSE')
+                  booktype=csebooks;
+                else
+                  if(subject=='ECE')
+                    booktype=ecebooks;
+            // Iterate through the books and create list items to display them
+            booktype.forEach(function(book) {
+                var li = document.createElement('li');
+                li.className = 'book-item';
+                li.innerHTML = '<strong>Title:</strong> ' + book.title + '<br>' +
+                               '<strong>Author:</strong> ' + book.author + '<br>' +
+                               '<strong>Price:</strong> ' + book.price;
+                bookList.appendChild(li); // Append the created list item to the book list
+            });
+        }
+    </script>
+</body>
+</html>
