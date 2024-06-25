@@ -1,0 +1,81 @@
+6. DevelopanddemonstrateaHTML5documentthatillustratestheuseoforderedlist, unordered list, table, borders, padding, color, and the <div>&<span> tag.
+Procedure:
+Steps for creating an HTML5 document that illustrates the use of ordered lists, unordered lists,  tables, borders, padding, color, and the <div> and <span> tags:
+o	Start by creating a new HTML file (with a .html extension) using a text editor or an integrated development environment (IDE).
+o	Begin your HTML document with the <!DOCTYPE html> declaration.
+o	Add the <html> element to enclose the entire content.
+o	Inside the <html> element, include the <head> and <body> sections.
+o	Use the <ol> tag to create an ordered list.
+o	Add list items using the <li> tag within the <ol>.
+o	Use the <ul> tag to create an unordered list.
+o	Add list items using the <li> tag within the <ul>.
+o	Create a table using the <table> tag.
+o	Define rows with the <tr> tag.
+o	Add table data cells using the <td> tag within each row.
+o	Apply borders to elements using CSS (Cascading Style Sheets).
+o	Use the border property to set borders around elements.
+o	Adjust padding using the padding property to create space inside elements.
+o	Set colors for text, backgrounds, and borders using CSS.
+o	Use color names, hexadecimal values, or RGB values.
+o	Use the <div> tag to create a block-level container.
+o	Use the <span> tag to create an inline container.
+o	Apply styles or manipulate content within these containers.
+
+Sample code:
+      <!DOCTYPE html>
+<html>
+<head>
+    <title>Lists,Tables</title>
+    <style>
+        /* CSS for styling */
+        body {  font-family: Arial, sans-serif;   color: #333;   }
+        .container {  margin: 20px;       padding: 10px;      border: 2px solid #ccc;     }
+        table {  border-collapse: collapse;    width: 100%;       }
+        th, td { border: 1px solid #ddd;      padding: 8px;       text-align: left;      }
+        th {  background-color: #f2f2f2;    }
+        .red {  color: red;     }
+        .blue { color: blue;    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML5 Demonstration</h1>
+        <h2>Ordered List and Unordered List</h2>
+        <ol>
+            <li>College</li>
+            <li>Name
+                <ul>
+                    <li>VVIT</li>
+                    <li>GUNTUR</li>
+                </ul>
+            </li>
+            <li>Item 3</li>
+        </ol>
+
+        <h2>Table</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+            </tr>
+            <tr>
+                <td>rama</td>
+                <td>30</td>
+                <td>Vijayawada</td>
+            </tr>
+            <tr>
+                <td>vinay</td>
+                <td>25</td>
+                <td>Guntur</td>
+            </tr>
+        </table>
+
+        <h2>Using Div and Span</h2>
+        <div>
+            <p>This is a <span class="red">red</span> span inside a div.</p>
+            <p>This is a <span class="blue">blue</span> span inside a div.</p>
+        </div>
+    </div>
+</body>
+</html>
