@@ -1,0 +1,173 @@
+3. Write a Java program that connects to a database using JDBC and does add, delete, modify and retrieve operations.
+Procedure:
+o	Ensure you have the following prerequisites:
+	JDK: Install the Java Development Kit.
+	Database System: Set up a database system (e.g., MySQL, Oracle, PostgreSQL).
+	JDBC Driver: Download the JDBC driver for your specific database system (e.g., MySQL Connector/J, Oracle JDBC driver).
+	IDE or Text Editor: Use an IDE (e.g., Eclipse, IntelliJ) or a text editor (e.g., Visual Studio Code) to write your Java code.
+o	Load the JDBC driver class into memory using Class.forName("your.driver.class.name").
+o	For example, if you’re using MySQL, load the MySQL driver class: Class.forName("com.mysql.cj.jdbc.Driver").
+o	Use DriverManager.getConnection(url, username, password) to create a connection to your database.
+o	Replace url, username, and password with your actual database details.
+o	Create (INSERT):
+	Create an INSERT SQL statement.
+	Use a PreparedStatement to execute the statement with appropriate parameters.
+	Example:
+o	Retrieve (SELECT):
+	Create a SELECT SQL query.
+	Execute the query using a Statement or PreparedStatement.
+	Process the retrieved data (e.g., iterate through a ResultSet).
+	Example:
+o	Update (UPDATE):
+	Create an UPDATE SQL statement.
+	Execute the statement using a PreparedStatement.
+	Example:
+o	Delete (DELETE):
+	Create a DELETE SQL statement.
+	Execute the statement using a PreparedStatement.
+	Example:
+o	Always close the database connection when done.
+o	Use connection.close() to release resources.
+o	Wrap your database-related code in try-catch blocks to handle exceptions (e.g., SQLException).
+o	Compile your Java program.
+o	Run it to test the database operations.
+
+
+Sample Code:
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.*;
+
+public class EmployeeDB {
+private Connection con=null;
+private Statement st=null;
+private ResultSet rs=null;
+private PreparedStatement pst=null;
+   EmployeeDB() throws ClassNotFoundException, SQLException ,IOException
+   {
+       Class.forName("oracle.jdbc.driver.OracleDriver");
+       con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","HR","HR");
+
+       InputStreamReader isr = new InputStreamReader(System.in);
+       BufferedReader br =new BufferedReader(isr);
+       System.out.println("MENU\n1.CREATE\n2.INSERT\n3.UPDATE\n4.DELETE\n");
+for(;;)
+       {
+       System.out.println("Enter your choice\n");
+int ch=Integer.parseInt(br.readLine());
+switch(ch)
+       {
+case 1:
+               System.out.println("Enter your query to create a table\n");
+               String q1=br.readLine();
+               st=con.createStatement();
+               st.execute(q1);
+               System.out.println("Query executed successfully");
+break;
+case 2:
+               System.out.println("Enter your query to Update the table\n");
+               String q2=br.readLine();
+               pst=con.prepareStatement(q2);
+               pst.executeUpdate(q2);
+               System.out.println("Query executed successfully");
+break;
+case 3:
+               System.out.println("Enter your query for selection");
+               String q3=br.readLine();
+               st=con.createStatement();
+               rs=st.executeQuery(q3);
+               DisplayRS(rs);
+               System.out.println("Query executed successfully");
+break;
+case 4:
+               System.out.println("Enter your query to delete from table\n");
+               String q4=br.readLine();
+               st=con.createStatement();
+               st.executeUpdate(q4);
+               System.out.println("Query executed successfully");
+break;
+default:
+               System.exit(0);
+
+       }
+
+   }
+   }
+publicstaticvoid main(String[] args) throws ClassNotFoundException, SQLException, IOException 
+    {
+final EmployeeDB s1=new EmployeeDB();
+   System.out.println("MENU\n1.INSERT\n2.UPDATE\n3.DELETE");
+    }
+
+privatevoid DisplayRS(ResultSet rs) throws SQLException {
+        ResultSet rs1=rs;
+        ResultSetMetaData rsm=rs1.getMetaData();
+int col=rsm.getColumnCount();
+int count=1;
+boolean b=rs1.next();
+if(!b)
+ {
+     System.out.println("Data not found");   
+ }
+else
+do
+     {   System.out.println("Record" +(count++)+"=>");
+      for(int j=0;j<col;j++)
+        System.out.println(rs1.getString(j+1)+"\t");
+         System.out.println (""); 
+     } while(rs1.next());   }   }
+Output:
+MENU
+1.CREATE
+2.INSERT
+3.UPDATE
+4.DELETE
+
+Enter your choice
+1
+Enter your query to create a table
+create table employee (emp_id number, emp_name varchar2(20), emp_salary number)
+Query executed successfully
+Enter your choice
+2
+Enter your query to Update the table
+insert into employee values (101, 'Alice', 5000)
+Query executed successfully
+Enter your choice
+2
+Enter your query to Update the table
+insert into employee values (102, 'Bob', 6000)
+Query executed successfully
+Enter your choice
+3
+Enter your query for selection
+select * from employee
+Record 1=>
+101
+Alice
+5000
+
+Record 2=>
+102
+Bob
+6000
+
+Query executed successfully
+Enter your choice
+4
+Enter your query to delete from table
+delete from employee where emp_id = 102
+Query executed successfully
+Enter your choice
+3
+Enter your query for selection
+select * from employee
+Record 1=>
+101
+Alice
+5000
+
+Query executed successfully
+Enter your choice
+5
