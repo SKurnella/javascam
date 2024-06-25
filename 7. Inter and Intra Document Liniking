@@ -1,0 +1,29 @@
+7. Write HTML5 code to provide intra and inter document linking.
+Procedure:
+Steps for creating an HTML5 document that illustrates intra and inter-document linking:
+o	Step 1: Identify the section or element you want to link to within the same page.
+o	Step 2: Add an id attribute to that section or element.
+o	Step 3: Create a link (anchor) that points to the specified id using the <a> tag with the href attribute set to #your_id.
+o	Step 1: Identify the external page (document) you want to link to.
+o	Step 2: Use the <a> tag with the href attribute set to the URL of the external page.
+o	Step 3: Optionally, specify the target attribute to control how the linked page opens (e.g., in the same window, a new window, etc.).
+
+ 
+Sample Code:
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+        <title>Hyper Links Example</title>
+</head>
+<body>
+    <h1>Hyper Links</h1>
+    <p><a href="#part1">Go to Part1</a></p>
+    <p><a href="#part2">Go to Part2</a></p>
+    <h2 id="part1">Part1 </h2>
+    <p>Here is my part1 section.</p>
+    <h2 id="part2">Part2</h2>
+    <p>Here is my part1 section.</p>
+    <h1>Inter-Document Linking</h1>
+    <p><a href="experiment1.html">Link to Experiment1</a></p>
+</body>
+</html>
