@@ -1,0 +1,82 @@
+2. Write a Java program that loads names and phone numbers from a text file where the data is organized as one line per record and each field in a record are separated by a tab (\t). It takes a name or phone number as input and prints the corresponding other value from the hash table (hint: use hash tables).
+Procedure:
+  The step-by-step procedure for writing a Java program that accomplishes the task described:
+o	Create a Java program that reads data from the given text file.
+o	Use a BufferedReader to read each line from the file.
+o	Split each line into fields using the tab character (\t) as the delimiter.
+o	Store the name and phone number pairs in a data structure (e.g., a hash table).
+o	Create a hash table (also known as a map or dictionary) to store the name-to-phone-number mappings.
+o	Use the name as the key and the phone number as the value.
+o	You can use Java’s HashMap or Hashtable for this purpose.
+o	For each line read from the file:
+	Extract the name and phone number from the split fields.
+	Add an entry to the hash table with the name as the key and the phone number as the value.
+o	Prompt the user to input either a name or a phone number.
+o	If the user provides a name:
+	Look up the corresponding phone number in the hash table.
+	Print the phone number.
+o	If the user provides a phone number:
+	Reverse the hash table (swap keys and values).
+	Look up the corresponding name using the reversed hash table.
+	Print the name.
+
+
+Sample Code:
+import java.io.*;
+import java.util.*;
+public class Phonebook
+{
+public static void main(String args[])
+{
+try
+{
+FileInputStream fis=new FileInputStream("//home/gcet/Desktop/myfile.txt");
+Scanner sc=new Scanner(fis).useDelimiter("\t");
+Hashtable<String,String> ht=new Hashtable<String,String> ();
+String[] strarray;
+String a,str;
+while(sc.hasNext())
+{
+a=sc.nextLine();
+strarray=a.split("\t");
+ht.put(strarray[0],strarray[1]);
+System.out.println("hash table values are"+strarray[0]+":"+strarray[1]);
+}
+Scanner s=new Scanner(System.in);
+System.out.println("Enter the name as given in the phone book");
+str=s.next();
+if(ht.containsKey(str))
+{
+System.out.println("phone no is"+ht.get(str));
+}
+else
+{
+System.out.println("Name is not matched");
+}
+}
+catch(Exception e)
+{
+System.out.println(e);
+}
+}
+}
+
+
+
+
+Myfile.txt
+Surya 567
+Ravi 456
+Sudha 678
+
+
+Output:
+Surya: 567
+Ravi: 456
+Sudha: 678
+Enter the name as given in the phone book
+Ravi
+phone no is: 456
+Enter the name as given in the phone book
+Soni
+Name is not matched
