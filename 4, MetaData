@@ -1,0 +1,74 @@
+4. Write a java program that prints the meta-data of a given table
+Procedure:
+ the simple steps for a Java program that prints the metadata of a given database table:
+o	Load the appropriate JDBC driver for your database system (e.g., MySQL, Oracle).
+o	This step ensures that Java can communicate with the database.
+o	Create a connection to your database using connection details (URL, username, password).
+o	The connection allows your program to interact with the database.
+o	Use the DatabaseMetaData interface provided by JDBC.
+o	This interface provides information about the database, driver, and available tables.
+o	Retrieve details such as driver name, driver version, user name, database product name, and product version.
+o	These details help you understand the database environment.
+o	Display the retrieved metadata to the user.
+o	You can print it to the console or use it in your application as needed.
+
+Sample Code:
+	ConnectionUtil.Java
+package LabProgs;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+public class ConnectionUtil
+{
+public static Connection getConnection() throws SQLException {
+Connection connection = null;
+try {
+Class.forName("com.mysql.jdbc.Connection");
+connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test",
+"root", "system");
+} catch (ClassNotFoundException e) {
+e.printStackTrace();
+} catch (SQLException e) {
+e.printStackTrace();
+}
+return connection;
+}
+
+
+import java.io.*;
+import java.sql.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+public class Prog14 {
+public static void main(String args[]) {
+try {
+Connection conn = null;
+conn = ConnectionUtil.getConnection();
+Prog14 prog14 = new Prog14();
+prog14.printMetaData(conn, "student_details");
+} catch (SQLException ex) {
+Logger.getLogger(Prog14.class.getName()).log(Level.SEVERE, null, ex);
+}
+}
+private void printMetaData(Connection conn, String tableName) {
+String query = "select * from " + tableName;
+Statement statement;
+try {
+statement = conn.createStatement();
+ResultSetMetaDatametaData = statement.executeQuery(query).getMetaData();
+longcolSize = metaData.getColumnCount();
+System.out.println("There are "+ colSize + " columns in table
+"+tableName);
+System.out.println("Columns are:");
+for(inti=1;i<=colSize;i++) {
+String colName = metaData.getColumnLabel(i);
+String colType = metaData.getColumnTypeName(i);
+System.out.println(colName+"-->"+colType);
+}
+} catch (SQLException e) {
+e.printStackTrace();
+
+}
+}
+}
